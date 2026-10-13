@@ -1,3 +1,65 @@
+# Perplexity completion alert
+
+A Windows program that plays a sound and shows a popup when a response finishes in the Perplexity desktop app. Licensed under [MIT](LICENSE).
+
+You do not need Python. Download `PerplexityDoorBell.exe` from the release and run it.
+
+## Requirements
+
+- Windows 10 or Windows 11
+- The [Perplexity desktop app](https://www.perplexity.ai/download)
+
+This was verified with Perplexity’s interface set to Korean.
+
+## Download
+
+1. Get `PerplexityDoorBell.exe` from the [release](https://github.com/N3skafe/perplexity-door-bell/releases/latest).
+2. Put it in any folder and double-click it.
+3. If Windows says it cannot verify the publisher, that is because the file is not signed. Review it, then choose to run it.
+
+The first launch creates `config.json` and `sounds\done.wav` next to the exe. Language, sound, and popup settings are stored there and kept the next time you open the program.
+
+## How to use
+
+Watching starts as soon as the program opens.
+
+- **Language**: 한국어, English, 中文, 日本語. This is the language of this program’s window.
+- **Browse**: choose a wav file for the alert.
+- **Preview**: play the selected sound.
+- **Show a popup when it finishes**: turn the completion popup on or off.
+
+If you quit Perplexity and open it again, the program finds the new window by process name, window title, and the input box.
+
+## When it alerts
+
+It alerts once when the on-screen button named `응답 중지(Esc)` appears and then stays gone for one second. A normal finish, a cancel, and a stop caused by an error all use this alert. Each generation plays the sound only once.
+
+## When it does not alert
+
+- Perplexity is closed
+- The window could not be read
+- The window is minimized
+- A question that was minimized is already finished when you open the window again
+
+While the window is minimized, the program can only tell that the app is still running. It cannot tell whether an answer is still being generated or has finished until the window is restored.
+
+## What it does not read
+
+It does not read the answer, the text in the input box, or login information. It does not send any of that over the network. It does not click, type, or otherwise control the Perplexity window.
+
+## Build it yourself
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install pyinstaller
+.\.venv\Scripts\python.exe -m PyInstaller --noconfirm doorbell.spec
+```
+
+The built file is `dist\PerplexityDoorBell.exe`.
+
+---
+
 # Perplexity 완료 알림
 
 Perplexity 데스크톱 앱에서 응답이 끝나면 소리와 팝업으로 알려 주는 Windows 프로그램입니다. 라이선스는 [MIT](LICENSE)입니다.
