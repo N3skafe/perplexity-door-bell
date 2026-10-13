@@ -13,7 +13,7 @@ Python을 설치하지 않아도 됩니다. 릴리스의 `PerplexityDoorBell.exe
 
 ## 받는 방법
 
-1. [릴리스](https://github.com/neskafe3112/perplexity-door-bell/releases/latest)에서 `PerplexityDoorBell.exe`를 받습니다.
+1. [릴리스](https://github.com/N3skafe/perplexity-door-bell/releases/latest)에서 `PerplexityDoorBell.exe`를 받습니다.
 2. 원하는 폴더에 두고 두 번 클릭합니다.
 3. Windows가 게시자를 확인할 수 없다는 창을 띄우면, 서명이 없는 파일이라서 그렇습니다. 내용을 확인한 뒤 실행을 선택합니다.
 
