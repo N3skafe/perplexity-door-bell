@@ -1,0 +1,38 @@
+{
+  "poll_interval_sec": 0.5,
+  "confirm_sec": 1.0,
+  "sound_file": "sounds/done.wav",
+  "popup_enabled": true,
+  "language": "ko",
+  "composer_name_limit": 24,
+  "max_parent_hops": 8,
+  "window": {
+    "process_exe": "Perplexity.exe",
+    "class_name": "Chrome_WidgetWin_1",
+    "title": "Perplexity"
+  },
+  "anchor": {
+    "control_type": "Edit",
+    "automation_id": "ask-input"
+  },
+  "idle_submit": {
+    "control_type": "Button",
+    "name": "제출",
+    "enabled": false,
+    "legacy_unavailable": true
+  },
+  "observed_composer_button_names": [
+    "파일 또는 도구 추가",
+    "검색",
+    "Computer",
+    "모델",
+    "받아쓰기",
+    "제출"
+  ],
+  "generating_names": [
+    "응답 중지(Esc)"
+  ],
+  "completion_distinct_from_cancel": false,
+  "sound_on_stop_disappear": true,
+  "notes": "생성 중에는 화면 안의 버튼 이름 '응답 중지(Esc)'가 보였다. 그 버튼이 보였다가 사라지면 취소나 오류로 멈춘 경우에도 소리와 팝업으로 한 번 알린다. 앱을 끄면 알리지 않고, 다시 켜지면 프로세스, 창 종류, 제목, 입력란으로 새 창을 찾는다. 소리 파일과 팝업 설정은 이 프로그램을 다시 켜도 유지된다."
+}

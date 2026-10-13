@@ -1,0 +1,243 @@
+"""화면 문구. 기본 언어는 한국어다."""
+
+from __future__ import annotations
+
+LANGUAGES = (
+    ("ko", "한국어"),
+    ("en", "English"),
+    ("zh", "中文"),
+    ("ja", "日本語"),
+)
+
+STRINGS: dict[str, dict[str, str]] = {
+    "ko": {
+        "app_title": "Perplexity 완료 알림",
+        "intro": "응답 중지 버튼이 보였다가 사라지면 알린다. 앱을 끄면 알리지 않고, 다시 켜지면 새 창을 찾는다.",
+        "status_heading": "상태",
+        "sound_heading": "소리",
+        "language_heading": "언어",
+        "preparing": "감시를 준비하고 있다.",
+        "hint_saved": "설정은 바로 저장된다. 이 프로그램을 다시 켜도 유지된다.",
+        "start": "감시 시작",
+        "stop": "감시 중지",
+        "browse": "찾아보기",
+        "preview": "들어보기",
+        "popup_check": "끝났을 때 팝업 표시",
+        "watching": "감시 중. 창을 찾는 중이다.",
+        "stopped": "감시를 중지했다.",
+        "file_dialog": "알림 소리 선택",
+        "wav_filter": "WAV 소리",
+        "sound_saved": "소리를 저장했다. 감시 중이면 다음 알림부터 적용된다.",
+        "preview_ok": "소리를 재생했다.",
+        "popup_on": "팝업을 켰다. 감시 중이면 다음 알림부터 적용된다.",
+        "popup_off": "팝업을 껐다. 감시 중이면 다음 알림부터 적용된다.",
+        "language_saved": "언어를 저장했다.",
+        "already_running": "이미 실행 중입니다.",
+        "uia_failed": "UI Automation을 시작하지 못했다.",
+        "window_missing": "앱 창을 찾지 못했다. 켜지면 다시 찾는다. 꺼져 있는 동안에는 알리지 않는다.",
+        "ambiguous": "입력란이 있는 창이 둘 이상이다. 어느 쪽인지 정하지 않고 알리지 않는다.",
+        "read_failed": "창을 읽지 못했다. 완료로 처리하지 않는다.",
+        "phase_idle": "대기",
+        "phase_generating": "생성 중",
+        "phase_unknown": "확인 중",
+        "minimized": "최소화 · {hwnd}. 접혀 있는 동안에는 종료로 판단하지 않는다.",
+        "place_front": "앞에 있음",
+        "place_covered": "다른 창에 가려짐",
+        "interrupted": "이번 생성은 알리지 않는다",
+        "rebound": "새 창에 맞췄다",
+        "popup_failed": "팝업을 띄우지 못했다.",
+        "alert_sent": "알림을 보냈다.",
+        "not_wav": "wav 파일만 사용할 수 있습니다.",
+        "missing": "소리 파일을 찾지 못했습니다.",
+        "unreadable": "소리 파일을 읽지 못했습니다.",
+        "bad_size": "소리 파일 크기가 맞지 않습니다.",
+        "bad_header": "wav 형식이 아닙니다.",
+        "play_failed": "소리를 재생하지 못했습니다.",
+        "popup_title": "응답 알림",
+        "popup_message": "생성이 끝났습니다.",
+        "popup_detail": "취소하거나 오류로 멈춘 경우에도 이 창이 나타납니다.",
+        "popup_close": "닫기",
+    },
+    "en": {
+        "app_title": "Perplexity completion alert",
+        "intro": "Plays a sound when a response finishes. Closing Perplexity does not notify. When it opens again, the new window is found.",
+        "status_heading": "Status",
+        "sound_heading": "Sound",
+        "language_heading": "Language",
+        "preparing": "Preparing to watch.",
+        "hint_saved": "Settings are saved immediately and kept the next time this program starts.",
+        "start": "Start watching",
+        "stop": "Stop watching",
+        "browse": "Browse",
+        "preview": "Preview",
+        "popup_check": "Show a popup when it finishes",
+        "watching": "Watching. Looking for the window.",
+        "stopped": "Watching stopped.",
+        "file_dialog": "Choose a notification sound",
+        "wav_filter": "WAV sound",
+        "sound_saved": "Sound saved. The next alert uses it while watching.",
+        "preview_ok": "Played the sound.",
+        "popup_on": "Popup turned on. The next alert uses it while watching.",
+        "popup_off": "Popup turned off. The next alert uses it while watching.",
+        "language_saved": "Language saved.",
+        "already_running": "Already running.",
+        "uia_failed": "UI Automation failed to start.",
+        "window_missing": "The app window was not found. It is found again when opened. Nothing is announced while it is closed.",
+        "ambiguous": "More than one window has the input box. No alert is sent until only one remains.",
+        "read_failed": "The window could not be read. This is not treated as completion.",
+        "phase_idle": "Idle",
+        "phase_generating": "Generating",
+        "phase_unknown": "Checking",
+        "minimized": "Minimized · {hwnd}. Completion is not judged while the window is collapsed.",
+        "place_front": "in front",
+        "place_covered": "behind another window",
+        "interrupted": "this generation will not be announced",
+        "rebound": "attached to the new window",
+        "popup_failed": "Could not show the popup.",
+        "alert_sent": "Alert sent.",
+        "not_wav": "Only WAV files can be used.",
+        "missing": "The sound file was not found.",
+        "unreadable": "The sound file could not be read.",
+        "bad_size": "The sound file size is not valid.",
+        "bad_header": "The file is not a WAV.",
+        "play_failed": "The sound could not be played.",
+        "popup_title": "Response alert",
+        "popup_message": "Generation finished.",
+        "popup_detail": "This window also appears when it was cancelled or stopped by an error.",
+        "popup_close": "Close",
+    },
+    "zh": {
+        "app_title": "Perplexity 完成提醒",
+        "intro": "回答结束时播放声音。关闭 Perplexity 时不提醒。再次打开后会寻找新窗口。",
+        "status_heading": "状态",
+        "sound_heading": "声音",
+        "language_heading": "语言",
+        "preparing": "正在准备监视。",
+        "hint_saved": "设置会立即保存，下次打开仍然有效。",
+        "start": "开始监视",
+        "stop": "停止监视",
+        "browse": "浏览",
+        "preview": "试听",
+        "popup_check": "结束时显示弹窗",
+        "watching": "正在监视，正在查找窗口。",
+        "stopped": "已停止监视。",
+        "file_dialog": "选择提示音",
+        "wav_filter": "WAV 声音",
+        "sound_saved": "已保存声音。若正在监视，下一次提醒会使用它。",
+        "preview_ok": "已播放声音。",
+        "popup_on": "已打开弹窗。若正在监视，下一次提醒会使用它。",
+        "popup_off": "已关闭弹窗。若正在监视，下一次提醒会使用它。",
+        "language_saved": "已保存语言。",
+        "already_running": "已经在运行。",
+        "uia_failed": "无法启动 UI Automation。",
+        "window_missing": "没有找到应用窗口。打开后会重新查找。关闭期间不提醒。",
+        "ambiguous": "有多个窗口包含输入框。在只剩一个之前不提醒。",
+        "read_failed": "无法读取窗口。不会当成完成。",
+        "phase_idle": "等待",
+        "phase_generating": "生成中",
+        "phase_unknown": "确认中",
+        "minimized": "已最小化 · {hwnd}。窗口收起时不判断是否结束。",
+        "place_front": "在最前",
+        "place_covered": "被其他窗口挡住",
+        "interrupted": "这次生成不提醒",
+        "rebound": "已对准新窗口",
+        "popup_failed": "无法显示弹窗。",
+        "alert_sent": "已发送提醒。",
+        "not_wav": "只能使用 WAV 文件。",
+        "missing": "找不到声音文件。",
+        "unreadable": "无法读取声音文件。",
+        "bad_size": "声音文件大小不正确。",
+        "bad_header": "不是 WAV 格式。",
+        "play_failed": "无法播放声音。",
+        "popup_title": "回答提醒",
+        "popup_message": "生成已结束。",
+        "popup_detail": "取消或因错误停止时也会显示此窗口。",
+        "popup_close": "关闭",
+    },
+    "ja": {
+        "app_title": "Perplexity 完了通知",
+        "intro": "応答が終わると音を鳴らします。Perplexity を閉じたときは知らせず、再度開くと新しいウィンドウを探します。",
+        "status_heading": "状態",
+        "sound_heading": "音",
+        "language_heading": "言語",
+        "preparing": "監視の準備をしています。",
+        "hint_saved": "設定はすぐに保存され、次回の起動時も保持されます。",
+        "start": "監視を開始",
+        "stop": "監視を停止",
+        "browse": "参照",
+        "preview": "試聴",
+        "popup_check": "終了時にポップアップを表示",
+        "watching": "監視中です。ウィンドウを探しています。",
+        "stopped": "監視を停止しました。",
+        "file_dialog": "通知音を選択",
+        "wav_filter": "WAV 音声",
+        "sound_saved": "音を保存しました。監視中なら次の通知から使います。",
+        "preview_ok": "音を再生しました。",
+        "popup_on": "ポップアップをオンにしました。監視中なら次の通知から使います。",
+        "popup_off": "ポップアップをオフにしました。監視中なら次の通知から使います。",
+        "language_saved": "言語を保存しました。",
+        "already_running": "すでに実行中です。",
+        "uia_failed": "UI Automation を開始できませんでした。",
+        "window_missing": "アプリのウィンドウが見つかりません。開くと再び探します。閉じている間は知らせません。",
+        "ambiguous": "入力欄のあるウィンドウが複数あります。一つになるまで知らせません。",
+        "read_failed": "ウィンドウを読めませんでした。完了にはしません。",
+        "phase_idle": "待機",
+        "phase_generating": "生成中",
+        "phase_unknown": "確認中",
+        "minimized": "最小化 · {hwnd}。折りたたみ中は終了と判断しません。",
+        "place_front": "前面",
+        "place_covered": "他のウィンドウの背後",
+        "interrupted": "この生成は知らせません",
+        "rebound": "新しいウィンドウに合わせました",
+        "popup_failed": "ポップアップを表示できませんでした。",
+        "alert_sent": "通知を送りました。",
+        "not_wav": "使えるのは WAV ファイルだけです。",
+        "missing": "音声ファイルが見つかりません。",
+        "unreadable": "音声ファイルを読めませんでした。",
+        "bad_size": "音声ファイルのサイズが正しくありません。",
+        "bad_header": "WAV 形式ではありません。",
+        "play_failed": "音を再生できませんでした。",
+        "popup_title": "応答通知",
+        "popup_message": "生成が終わりました。",
+        "popup_detail": "キャンセルやエラーで止まったときもこのウィンドウを表示します。",
+        "popup_close": "閉じる",
+    },
+}
+
+FONT_CANDIDATES = {
+    "ko": ("맑은 고딕", "Malgun Gothic", "Segoe UI"),
+    "en": ("Segoe UI", "맑은 고딕", "Malgun Gothic"),
+    "zh": ("Microsoft YaHei UI", "Microsoft YaHei", "맑은 고딕", "Malgun Gothic", "Segoe UI"),
+    "ja": ("Yu Gothic UI", "Meiryo UI", "Yu Gothic", "맑은 고딕", "Malgun Gothic", "Segoe UI"),
+}
+LIST_FONT_CANDIDATES = ("맑은 고딕", "Malgun Gothic", "Gulim", "Segoe UI")
+
+
+def normalize(code: str | None) -> str:
+    value = (code or "ko").lower()
+    if value in STRINGS:
+        return value
+    return "ko"
+
+
+def text(code: str | None, key: str, **fmt: str) -> str:
+    lang = normalize(code)
+    value = STRINGS[lang].get(key) or STRINGS["ko"].get(key) or key
+    if fmt:
+        return value.format(**fmt)
+    return value
+
+
+def label_for(code: str | None) -> str:
+    lang = normalize(code)
+    for item, label in LANGUAGES:
+        if item == lang:
+            return label
+    return "한국어"
+
+
+def code_from_label(label: str) -> str:
+    for code, item in LANGUAGES:
+        if item == label:
+            return code
+    return "ko"

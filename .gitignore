@@ -1,0 +1,7 @@
+.venv/
+snapshots/
+observations/
+*.log
+__pycache__/
+build/
+dist/
