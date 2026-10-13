@@ -110,9 +110,19 @@ def _work_area() -> tuple[int, int, int, int]:
     return int(rect.left), int(rect.top), int(rect.right), int(rect.bottom)
 
 
-def _place_bottom_right(win) -> None:
+def _show_without_activate(win) -> None:
+    """보이게만 하고 초점은 가져가지 않는다. Windows 알림음이 따라오지 않게 한다."""
+    win.update_idletasks()
     hwnd = toplevel_hwnd(win)
     user32 = ctypes.windll.user32
+    get_long = user32.GetWindowLongPtrW
+    set_long = user32.SetWindowLongPtrW
+    get_long.restype = ctypes.c_ssize_t
+    get_long.argtypes = [wintypes.HWND, ctypes.c_int]
+    set_long.restype = ctypes.c_ssize_t
+    set_long.argtypes = [wintypes.HWND, ctypes.c_int, ctypes.c_ssize_t]
+    style = int(get_long(hwnd, -20) or 0)
+    set_long(hwnd, -20, style | 0x08000000)
     rect = wintypes.RECT()
     if not user32.GetWindowRect(hwnd, ctypes.byref(rect)):
         return
@@ -123,7 +133,8 @@ def _place_bottom_right(win) -> None:
     left, top, right, bottom = _work_area()
     x = max(left, right - width - 16)
     y = max(top, bottom - height - 16)
-    user32.SetWindowPos(hwnd, wintypes.HWND(-1), x, y, 0, 0, 0x0001 | 0x0040)
+    user32.SetWindowPos(hwnd, wintypes.HWND(-1), x, y, 0, 0, 0x0001 | 0x0010 | 0x0040)
+    user32.ShowWindow(hwnd, 4)
 
 
 def toplevel_hwnd(widget) -> int:
@@ -147,9 +158,9 @@ def open_popup(root, auto_close_ms: int = 8000, language: str = "ko", font_famil
             pass
     win = tk.Toplevel(root)
     root._doorbell_popup = win
+    win.withdraw()
     win.title(i18n.text(language, "popup_title"))
     win.resizable(False, False)
-    win.attributes("-topmost", True)
     frame = ttk.Frame(win, padding=16)
     frame.grid(sticky="nsew")
     ttk.Label(frame, text=i18n.text(language, "popup_message"), font=(font_family, 14, "bold")).grid(sticky="w")
@@ -174,9 +185,7 @@ def open_popup(root, auto_close_ms: int = 8000, language: str = "ko", font_famil
     width = max(win.winfo_width(), 320)
     height = max(win.winfo_height(), 140)
     win.geometry(f"{width}x{height}")
-    win.update_idletasks()
-    _place_bottom_right(win)
-    button.focus_set()
+    _show_without_activate(win)
     if auto_close_ms > 0:
         win.after(auto_close_ms, close)
     return win
